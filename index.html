@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-Day Meal Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .modal-bg {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-card {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-5">
+
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8">14-Day Meal Planner</h1>
+        
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <!-- Repeatable Card Template -->
+            <!-- Day 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(1)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 1</h2>
+                <p class="text-gray-600">
+                    Breakfast: Vegetable dalia with a sprinkle of seeds.<br>
+                    Mid-Morning Snack: A handful of almonds and green tea.<br>
+                    Lunch: Tofu stir-fry with quinoa and sautéed vegetables.<br>
+                    Evening Snack: Cucumber and carrot sticks with hummus.<br>
+                    Dinner: Palak paneer with brown rice and mixed green salad.
+                </p>
+            </div>
+            <!-- Day 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(2)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 2</h2>
+                <p class="text-gray-600">
+                    Breakfast: Oats porridge with skimmed milk and mixed seeds.<br>
+                    Mid-Morning Snack: A bowl of papaya or an apple.<br>
+                    Lunch: Moong dal khichdi with curd and steamed broccoli.<br>
+                    Evening Snack: Roasted chana with herbal tea.<br>
+                    Dinner: Grilled paneer with sautéed spinach and brown rice.
+                </p>
+            </div>
+            <!-- Day 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(3)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 3</h2>
+                <p class="text-gray-600">
+                    Breakfast: Poha with peanuts and a boiled egg.<br>
+                    Mid-Morning Snack: A fruit of your choice.<br>
+                    Lunch: Rajma with brown rice and side salad.<br>
+                    Evening Snack: Buttermilk with roasted seeds.<br>
+                    Dinner: Tofu stir-fry with mixed vegetables.
+                </p>
+            </div>
+            <!-- Day 4 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(4)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 4</h2>
+                <p class="text-gray-600">
+                    Breakfast: Besan chilla with mint chutney.<br>
+                    Mid-Morning Snack: Yogurt with flaxseeds.<br>
+                    Lunch: Grilled paneer tikka with salad and whole wheat roti.<br>
+                    Evening Snack: Fresh coconut water with walnuts.<br>
+                    Dinner: Mixed lentil soup with sautéed vegetables.
+                </p>
+            </div>
+            <!-- Day 5 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(5)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 5</h2>
+                <p class="text-gray-600">
+                    Breakfast: Scrambled paneer with whole wheat toast.<br>
+                    Mid-Morning Snack: A pear or orange.<br>
+                    Lunch: Masoor dal with quinoa and side salad.<br>
+                    Evening Snack: Green tea with mixed nuts.<br>
+                    Dinner: Grilled tofu with roasted sweet potatoes.
+                </p>
+            </div>
+            <!-- Day 6 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(6)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 6</h2>
+                <p class="text-gray-600">
+                    Breakfast: Methi thepla with curd.<br>
+                    Mid-Morning Snack: Fresh fruit smoothie with no added sugar.<br>
+                    Lunch: Paneer curry with brown rice and steamed vegetables.<br>
+                    Evening Snack: Roasted makhana with herbal tea.<br>
+                    Dinner: Stir-fried tofu with bell peppers and mushrooms.
+                </p>
+            </div>
+            <!-- Day 7 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(7)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 7</h2>
+                <p class="text-gray-600">
+                    Breakfast: Vegetable upma made with rava or broken wheat.<br>
+                    Mid-Morning Snack: Mixed berries or an apple.<br>
+                    Lunch: Chole with whole wheat roti and salad.<br>
+                    Evening Snack: Yogurt with chia seeds.<br>
+                    Dinner: Grilled paneer with quinoa and sautéed greens.
+                </p>
+            </div>
+            <!-- Day 8 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(8)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 8</h2>
+                <p class="text-gray-600">
+                    Breakfast: Oats chilla with green chutney.<br>
+                    Mid-Morning Snack: A handful of pistachios.<br>
+                    Lunch: Spinach and lentil stew with brown rice.<br>
+                    Evening Snack: Buttermilk with roasted seeds.<br>
+                    Dinner: Grilled tofu with steamed vegetables.
+                </p>
+            </div>
+            <!-- Day 9 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(9)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 9</h2>
+                <p class="text-gray-600">
+                    Breakfast: Multigrain toast with avocado and boiled eggs.<br>
+                    Mid-Morning Snack: A bowl of pomegranate.<br>
+                    Lunch: Mixed vegetable sabzi with quinoa.<br>
+                    Evening Snack: Green tea with mixed nuts.<br>
+                    Dinner: Paneer bhurji with side salad.
+                </p>
+            </div>
+            <!-- Day 10 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(10)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 10</h2>
+                <p class="text-gray-600">
+                    Breakfast: Ragi porridge with nuts.<br>
+                    Mid-Morning Snack: A fruit of your choice.<br>
+                    Lunch: Tandoori paneer with sautéed vegetables.<br>
+                    Evening Snack: Roasted chickpeas with herbal tea.<br>
+                    Dinner: Moong dal soup with brown rice.
+                </p>
+            </div>
+            <!-- Day 11 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(11)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 11</h2>
+                <p class="text-gray-600">
+                    Breakfast: Vegetable uttapam with coconut chutney.<br>
+                    Mid-Morning Snack: A handful of almonds.<br>
+                    Lunch: Palak and moong dal with whole wheat roti.<br>
+                    Evening Snack: Fresh coconut water with walnuts.<br>
+                    Dinner: Grilled tofu with steamed vegetables.
+                </p>
+            </div>
+            <!-- Day 12 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(12)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 12</h2>
+                <p class="text-gray-600">
+                    Breakfast: Masala paneer bhurji with whole wheat toast.<br>
+                    Mid-Morning Snack: Yogurt with flaxseeds.<br>
+                    Lunch: Rajma with quinoa and side salad.<br>
+                    Evening Snack: Buttermilk with roasted seeds.<br>
+                    Dinner: Grilled tofu with roasted sweet potatoes.
+                </p>
+            </div>
+            <!-- Day 13 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(13)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 13</h2>
+                <p class="text-gray-600">
+                    Breakfast: Poha with peanuts.<br>
+                    Mid-Morning Snack: A fruit of your choice.<br>
+                    Lunch: Chole with whole wheat roti and salad.<br>
+                    Evening Snack: Green tea with mixed nuts.<br>
+                    Dinner: Stir-fried tofu or paneer with bell peppers and mushrooms.
+                </p>
+            </div>
+            <!-- Day 14 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer" onclick="openModal(14)">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">Day 14</h2>
+                <p class="text-gray-600">
+                    Breakfast: Methi paratha with curd.<br>
+                    Mid-Morning Snack: Fresh fruit smoothie with no added sugar.<br>
+                    Lunch: Paneer curry with brown rice and steamed vegetables.<br>
+                    Evening Snack: Roasted makhana with herbal tea.<br>
+                    Dinner: Mixed lentil soup with sautéed vegetables.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Templates -->
+    <!-- Day 1 Modal -->
+    <div id="modal-1" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 1 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Vegetable+Dalia" alt="Vegetable Dalia" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Vegetable Dalia</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Almonds+and+Green+Tea" alt="Almonds and Green Tea" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Almonds and Green Tea</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Tofu+Stir-Fry" alt="Tofu Stir-Fry" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Tofu Stir-Fry</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Cucumber+and+Carrot+Sticks" alt="Cucumber and Carrot Sticks" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Cucumber and Carrot Sticks</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Palak+Paneer" alt="Palak Paneer" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Palak Paneer</p>
+                </a>
+            </div>
+            <button onclick="closeModal(1)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 2 Modal -->
+    <div id="modal-2" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 2 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Oats+Porridge" alt="Oats Porridge" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Oats Porridge</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Papaya+or+Apple" alt="Papaya or Apple" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Papaya or Apple</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Moong+Dal+Khichdi" alt="Moong Dal Khichdi" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Moong Dal Khichdi</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Roasted+Chana" alt="Roasted Chana" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Roasted Chana</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Paneer" alt="Grilled Paneer" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Paneer</p>
+                </a>
+            </div>
+            <button onclick="closeModal(2)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 3 Modal -->
+    <div id="modal-3" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 3 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Poha+with+Peanuts" alt="Poha with Peanuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Poha with Peanuts</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+of+Your+Choice" alt="Fruit of Your Choice" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Fruit of Your Choice</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Rajma+with+Brown+Rice" alt="Rajma with Brown Rice" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Rajma with Brown Rice</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Buttermilk" alt="Buttermilk" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Buttermilk</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Tofu+Stir-Fry" alt="Tofu Stir-Fry" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Tofu Stir-Fry</p>
+                </a>
+            </div>
+            <button onclick="closeModal(3)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 4 Modal -->
+    <div id="modal-4" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 4 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Besan+Chilla" alt="Besan Chilla" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Besan Chilla</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Yogurt+with+Flaxseeds" alt="Yogurt with Flaxseeds" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Yogurt with Flaxseeds</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Grilled+Paneer+Tikka" alt="Grilled Paneer Tikka" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Paneer Tikka</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Coconut+Water+and+Walnuts" alt="Coconut Water and Walnuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Coconut Water and Walnuts</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Mixed+Lentil+Soup" alt="Mixed Lentil Soup" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Mixed Lentil Soup</p>
+                </a>
+            </div>
+            <button onclick="closeModal(4)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 5 Modal -->
+    <div id="modal-5" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 5 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Scrambled+Paneer" alt="Scrambled Paneer" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Scrambled Paneer</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Pear+or+Orange" alt="Pear or Orange" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Pear or Orange</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Masoor+Dal+with+Quinoa" alt="Masoor Dal with Quinoa" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Masoor Dal with Quinoa</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Green+Tea+and+Mixed+Nuts" alt="Green Tea and Mixed Nuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Green Tea and Mixed Nuts</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Tofu" alt="Grilled Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(5)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 6 Modal -->
+    <div id="modal-6" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 6 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Methi+Thepla" alt="Methi Thepla" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Methi Thepla</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+Smoothie" alt="Fruit Smoothie" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Fruit Smoothie</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Paneer+Curry" alt="Paneer Curry" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Paneer Curry</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Roasted+Makhana" alt="Roasted Makhana" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Roasted Makhana</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Stir-Fried+Tofu" alt="Stir-Fried Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Stir-Fried Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(6)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 7 Modal -->
+    <div id="modal-7" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 7 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Vegetable+Upma" alt="Vegetable Upma" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Vegetable Upma</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Mixed+Berries" alt="Mixed Berries" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Mixed Berries</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Chole+with+Roti" alt="Chole with Roti" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Chole with Roti</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Yogurt+with+Chia+Seeds" alt="Yogurt with Chia Seeds" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Yogurt with Chia Seeds</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Paneer" alt="Grilled Paneer" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Paneer</p>
+                </a>
+            </div>
+            <button onclick="closeModal(7)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 8 Modal -->
+    <div id="modal-8" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 8 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Oats+Chilla" alt="Oats Chilla" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Oats Chilla</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Pistachios" alt="Pistachios" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Pistachios</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Spinach+and+Lentil+Stew" alt="Spinach and Lentil Stew" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Spinach and Lentil Stew</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Buttermilk" alt="Buttermilk" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Buttermilk</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Tofu" alt="Grilled Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(8)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 9 Modal -->
+    <div id="modal-9" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 9 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Multigrain+Toast+with+Avocado" alt="Multigrain Toast with Avocado" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Multigrain Toast with Avocado</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Pomegranate" alt="Pomegranate" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Pomegranate</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Mixed+Vegetable+Sabzi" alt="Mixed Vegetable Sabzi" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Mixed Vegetable Sabzi</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Green+Tea+and+Mixed+Nuts" alt="Green Tea and Mixed Nuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Green Tea and Mixed Nuts</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Paneer+Bhurji" alt="Paneer Bhurji" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Paneer Bhurji</p>
+                </a>
+            </div>
+            <button onclick="closeModal(9)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 10 Modal -->
+    <div id="modal-10" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 10 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Ragi+Porridge" alt="Ragi Porridge" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Ragi Porridge</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+of+Your+Choice" alt="Fruit of Your Choice" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Fruit of Your Choice</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Tandoori+Paneer" alt="Tandoori Paneer" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Tandoori Paneer</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Roasted+Chickpeas" alt="Roasted Chickpeas" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Roasted Chickpeas</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Moong+Dal+Soup" alt="Moong Dal Soup" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Moong Dal Soup</p>
+                </a>
+            </div>
+            <button onclick="closeModal(10)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 11 Modal -->
+    <div id="modal-11" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 11 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Vegetable+Uttapam" alt="Vegetable Uttapam" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Vegetable Uttapam</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Almonds" alt="Almonds" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Almonds</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Palak+and+Moong+Dal" alt="Palak and Moong Dal" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Palak and Moong Dal</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Coconut+Water+and+Walnuts" alt="Coconut Water and Walnuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Coconut Water and Walnuts</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Tofu" alt="Grilled Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(11)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 12 Modal -->
+    <div id="modal-12" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 12 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Masala+Paneer+Bhurji" alt="Masala Paneer Bhurji" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Masala Paneer Bhurji</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Yogurt+with+Flaxseeds" alt="Yogurt with Flaxseeds" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Yogurt with Flaxseeds</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Rajma+with+Quinoa" alt="Rajma with Quinoa" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Rajma with Quinoa</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Buttermilk" alt="Buttermilk" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Buttermilk</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Grilled+Tofu" alt="Grilled Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Grilled Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(12)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 13 Modal -->
+    <div id="modal-13" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 13 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Poha+with+Peanuts" alt="Poha with Peanuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Poha with Peanuts</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+of+Your+Choice" alt="Fruit of Your Choice" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Fruit of Your Choice</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Chole+with+Roti" alt="Chole with Roti" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Chole with Roti</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Green+Tea+and+Mixed+Nuts" alt="Green Tea and Mixed Nuts" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Green Tea and Mixed Nuts</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Stir-Fried+Tofu" alt="Stir-Fried Tofu" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Stir-Fried Tofu</p>
+                </a>
+            </div>
+            <button onclick="closeModal(13)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+    <!-- Day 14 Modal -->
+    <div id="modal-14" class="modal-bg none">
+        <div class="modal-card bg-white p-10 rounded-lg shadow-lg max-w-3xl w-full" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Day 14 Meal Details</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Breakfast -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Methi+Paratha" alt="Methi Paratha" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Methi Paratha</p>
+                </a>
+                <!-- Mid-Morning Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+Smoothie" alt="Fruit Smoothie" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Fruit Smoothie</p>
+                </a>
+                <!-- Lunch -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Paneer+Curry" alt="Paneer Curry" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Paneer Curry</p>
+                </a>
+                <!-- Evening Snack -->
+                <a href="#" class="block">
+                    <img src="https://via.placeholder.com/300x200?text=Roasted+Makhana" alt="Roasted Makhana" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Roasted Makhana</p>
+                </a>
+                <!-- Dinner -->
+                <a href="#" class="block col-span-2">
+                    <img src="https://via.placeholder.com/600x400?text=Mixed+Lentil+Soup" alt="Mixed Lentil Soup" class="w-full rounded-lg">
+                    <p class="mt-2 text-gray-700">Mixed Lentil Soup</p>
+                </a>
+            </div>
+            <button onclick="closeModal(14)" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(`modal-${id}`).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(`modal-${id}`).style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal-bg');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
