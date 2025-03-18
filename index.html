@@ -176,18 +176,7 @@
   }
 ]
 
-            for (let i = 6; i <= 14; i++) {
-                meals.push({
-                    day: `Day ${i}`,
-                    meals: [
-                        { title: "Breakfast", description: `Breakfast description for Day ${i}.`, image: "image_url" },
-                        { title: "Mid-Morning Snack", description: `Mid-Morning Snack description for Day ${i}.`, image: "image_url" },
-                        { title: "Lunch", description: `Lunch description for Day ${i}.`, image: "image_url" },
-                        { title: "Evening Snack", description: `Evening Snack description for Day ${i}.`, image: "image_url" },
-                        { title: "Dinner", description: `Dinner description for Day ${i}.`, image: "image_url" }
-                    ]
-                });
-            }
+
             
             meals.forEach((day, index) => {
                 document.write(`<div class='bg-white p-4 rounded-lg shadow cursor-pointer' onclick='openModal(${index})'>
